@@ -23,15 +23,38 @@ export default function DirectorDashboard() {
     <main className="min-h-screen bg-[#0f172a] p-8">
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div>
-          <Link href="/" className="text-slate-400 text-sm hover:text-white">← Back to Home</Link>
+          <Link href="/login" className="text-slate-400 text-sm hover:text-white">← Back to Login</Link>
           <h1 className="text-3xl font-bold text-white mt-2">Program Director Dashboard</h1>
           <p className="text-slate-400">Marconpra · Managing 4 Programs · 42 Active Interns</p>
         </div>
         <div className="bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs px-4 py-2 rounded-full">
           🎯 Director View
         </div>
+      </div>
+
+      {/* Navigation Bar */}
+      <div className="flex gap-2 mb-8 flex-wrap">
+        {[
+          { href: '/dashboard/ceo', label: '👔 CEO', active: false },
+          { href: '/dashboard/director', label: '🎯 Director', active: true },
+          { href: '/dashboard/mentor', label: '👨‍🏫 Mentor', active: false },
+          { href: '/dashboard/intern', label: '🎓 Intern', active: false },
+          { href: '/analytics', label: '📊 Analytics', active: false },
+          { href: '/tasks', label: '📋 Tasks', active: false },
+          { href: '/notifications', label: '🔔 Notifications', active: false },
+        ].map((item) => (
+          <Link key={item.href} href={item.href}>
+            <div className={`px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+              item.active
+                ? 'bg-orange-600 text-white'
+                : 'bg-[#1e293b] text-slate-400 hover:text-white border border-slate-700'
+            }`}>
+              {item.label}
+            </div>
+          </Link>
+        ))}
       </div>
 
       {/* Stats */}

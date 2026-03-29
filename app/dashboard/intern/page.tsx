@@ -30,7 +30,6 @@ export default function InternDashboard() {
     if (status === 'Completed') return 'bg-green-500/20 text-green-400'
     if (status === 'In Progress') return 'bg-blue-500/20 text-blue-400'
     if (status === 'Under Review') return 'bg-yellow-500/20 text-yellow-400'
-    if (status === 'To Do') return 'bg-slate-500/20 text-slate-400'
     return 'bg-slate-500/20 text-slate-400'
   }
 
@@ -51,15 +50,38 @@ export default function InternDashboard() {
     <main className="min-h-screen bg-[#0f172a] p-8">
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div>
-          <Link href="/" className="text-slate-400 text-sm hover:text-white">← Back to Home</Link>
+          <Link href="/login" className="text-slate-400 text-sm hover:text-white">← Back to Login</Link>
           <h1 className="text-3xl font-bold text-white mt-2">Intern Dashboard</h1>
           <p className="text-slate-400">Welcome back, Rahul Sharma · AI Development Batch 1</p>
         </div>
         <div className="bg-green-500/10 border border-green-500/30 text-green-400 text-xs px-4 py-2 rounded-full">
           🎓 Intern View
         </div>
+      </div>
+
+      {/* Navigation Bar */}
+      <div className="flex gap-2 mb-8 flex-wrap">
+        {[
+          { href: '/dashboard/ceo', label: '👔 CEO', active: false },
+          { href: '/dashboard/director', label: '🎯 Director', active: false },
+          { href: '/dashboard/mentor', label: '👨‍🏫 Mentor', active: false },
+          { href: '/dashboard/intern', label: '🎓 Intern', active: true },
+          { href: '/analytics', label: '📊 Analytics', active: false },
+          { href: '/tasks', label: '📋 Tasks', active: false },
+          { href: '/notifications', label: '🔔 Notifications', active: false },
+        ].map((item) => (
+          <Link key={item.href} href={item.href}>
+            <div className={`px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+              item.active
+                ? 'bg-green-600 text-white'
+                : 'bg-[#1e293b] text-slate-400 hover:text-white border border-slate-700'
+            }`}>
+              {item.label}
+            </div>
+          </Link>
+        ))}
       </div>
 
       {/* Stats */}
