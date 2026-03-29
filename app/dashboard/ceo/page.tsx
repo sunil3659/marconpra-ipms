@@ -28,7 +28,7 @@ export default function CEODashboard() {
       })
       const result = await response.json()
       setAiSummary(result.summary)
-    } catch (error) {
+    } catch (_error) {
       setAiSummary('Error generating summary. Please try again.')
     }
     setLoading(false)

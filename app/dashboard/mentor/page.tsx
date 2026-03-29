@@ -39,7 +39,7 @@ export default function MentorDashboard() {
       })
       const result = await response.json()
       setNarrative(result.summary)
-    } catch (error) {
+    } catch (_error) {
       setNarrative('Error generating narrative. Please try again.')
     }
     setLoading(false)
